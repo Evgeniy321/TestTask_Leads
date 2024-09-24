@@ -1,4 +1,4 @@
 API_URL = ''
-CSV_PATH = ''
-RESULT_JSON_PATH = ''
+CSV_PATH = 'csv/example.csv'
+RESULT_JSON_PATH = 'result.json'
 token = ""

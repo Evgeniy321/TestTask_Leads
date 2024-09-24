@@ -7,11 +7,18 @@ chat_id = ''
 
 @bot.message_handle(commands=['start'])
 def start(message):
-    global client_id
+    global chat_id
     chat_id = message.chat.id
-    #start deloy with prefect
-    bot.send_message(chat_id, "start flow")
 
-@bot.message_handler(function = lambda message: True)
-def notice(message):
-    pass#обработчик сервера на выполение задач
+def send_telegram_message(message):
+    bot.send_message(chat_id, message)
+
+# Колбэк при успешном выполнении потока
+def flow_success_handler(flow, state):
+    message = f"Поток {flow.name} завершился успешно!"
+    send_telegram_message(message)
+
+# Колбэк при неудачном выполнении потока
+def flow_failure_handler(flow, state):
+    message = f"Поток {flow.name} завершился с ошибкой!"
+    send_telegram_message(message)

@@ -1,2 +1,7 @@
 venv/
 config.py
+docker-compose.debug.yml
+docker-compose.yml
+Dockerfile
+requirements.txt
+.dockerignore
